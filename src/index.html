@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Monaco + WASM Demo</title>
+        <style>
+            * {
+                box-sizing: content-box;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow: hidden;
+                font-family: sans-serif;
+                background-color: #333a44;
+                color: #bcc9da;
+            }
+
+            #topBar {
+                height: 40px;
+                padding: 5px 10px;
+                background: #0d1116;
+                border-bottom: 2px solid #333a44;
+
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            #editors {
+                width: 100vw;
+                height: calc(100% - 42px);
+                display: flex;
+                flex-direction: row;
+                gap: 2px;
+            }
+
+            .editor-pane {
+                flex-basis: calc(100% - 4px / 3);
+            }
+
+            select {
+                padding: 3px 6px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="topBar">
+            <label for="fileFormat">File Format:</label>
+            <div>
+                <label><input type="radio" name="lang" value="yaml" checked onchange="handleLanguageChange(event)" />YAML</label>
+                <label><input type="radio" name="lang" value="json" onchange="handleLanguageChange(event)" />JSON</label>
+            </div>
+
+            <button id="convertBtn">Convert to Go</button>
+        </div>
+
+        <div id="editors">
+            <div id="input-editor" class="editor-pane"></div>
+            <div id="config-editor" class="editor-pane"></div>
+            <div id="output-editor" class="editor-pane"></div>
+        </div>
+
+        <script src="./wasm_exec.js"></script>
+        <script type="module" src="/main.js"></script>
+    </body>
+
+</html>
