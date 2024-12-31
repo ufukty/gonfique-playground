@@ -67,7 +67,7 @@ header {
 
     #motto {
         color: #3b5370;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: cursive;
         font-style: italic;
 
         code {
@@ -117,4 +117,24 @@ header {
 
 #output-editor {
     grid-area: output
+}
+
+.editor {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    .header {
+        width: 100%;
+        padding: 10px 20px;
+        text-align: center;
+        background-color: #0d111689;
+        font-size: 0.8rem;
+        border-bottom: 1px solid #222d3a;
+    }
+
+    .editor-pane {
+        flex-grow: 1;
+    }
 }

@@ -24,13 +24,22 @@
         </header>
 
 
-        <div id="input-editor" class="editor-pane"></div>
-        <div id="config-editor" class="editor-pane"></div>
-        <div id="output-editor" class="editor-pane"></div>
+        <div id="input-editor" class="editor">
+            <div class="header">Input / Example (YAML/JSON)</div>
+            <div class="editor-pane"></div>
+        </div>
+        <div id="config-editor" class="editor">
+            <div class="header">Gonfique config</div>
+            <div class="editor-pane"></div>
+        </div>
+        <div id="output-editor" class="editor">
+            <div class="header">Output</div>
+            <div class="editor-pane"></div>
+        </div>
 
 
         <script src="./wasm_exec.js"></script>
-        <script type="module" src="/main.js"></script>
+        <script type="module" src="/main.ts"></script>
     </body>
 
 </html>
