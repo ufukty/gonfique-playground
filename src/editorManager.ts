@@ -6,7 +6,7 @@ declare const Go: any;
 
 declare function Convert(input: string, inputMode: string, config: string): [string, string];
 
-const buildURL = "./wasm-builds/gonfique-v2.0.0-pre-alpha-10-gab6bca3-js-wasm";
+const buildURL = "/gonfique-wasm/v2.0.0-pre-alpha-11-g5e534d7.wasm";
 
 export class EditorManager {
     private editors: {
