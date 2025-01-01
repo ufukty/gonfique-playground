@@ -1,10 +1,30 @@
 import * as monaco from "monaco-editor";
 
+/**
+ * Debounce utility function.
+ *
+ * @param func The function that should be debounced.
+ * @param wait The number of milliseconds to wait before calling `func`.
+ * @returns A debounced version of `func`.
+ */
+function debounce<T extends (...args: any[]) => void>(func: T, wait = 300) {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    return function debouncedFunction(...args: Parameters<T>) {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+        }, wait);
+    };
+}
+
 // Declare the WebAssembly Go interface (from wasm_exec.js)
 declare const Go: any;
 
 // Declare global WASM functions exposed by the Go module
-declare function Convert(input: string, inputMode: string, config: string): string;
+declare function Convert(input: string, inputMode: string, config: string): [string, string];
 
 let examples = {
     input: `domain: localhost
@@ -67,6 +87,8 @@ class EditorManager {
 
     private wasmInitialized = false;
 
+    private debouncedAutoConvert = debounce(() => this.doConversion(), 500);
+
     constructor() {
         this.initWasm();
         this.createEditors();
@@ -79,7 +101,7 @@ class EditorManager {
     private async initWasm(): Promise<void> {
         const go = new Go();
         try {
-            const response = await fetch("./wasm-builds/gonfique-v2.0.0-pre-alpha-7-gca1c2dc-dirty-js-wasm");
+            const response = await fetch("./wasm-builds/gonfique-v2.0.0-pre-alpha-9-gfd86104-js-wasm");
             const bytes = await response.arrayBuffer();
             const result = await WebAssembly.instantiate(bytes, go.importObject);
             go.run(result.instance);
@@ -153,26 +175,41 @@ class EditorManager {
     private wireActions(): void {
         const convertBtn = document.getElementById("convertBtn");
         convertBtn?.addEventListener("click", this.handleConvertClick.bind(this));
+
+        // 2) Use the debounced function in the change event
+        this.editors?.input.onDidChangeModelContent(() => this.debouncedAutoConvert());
+        this.editors?.config.onDidChangeModelContent(() => this.debouncedAutoConvert());
     }
 
-    /**
-     * Handle the Convert button click.
-     */
     private handleConvertClick(): void {
+        this.doConversion();
+    }
+
+    private doConversion(): void {
         if (!this.wasmInitialized) {
-            alert("WASM not loaded yet. Please wait...");
+            console.warn("WASM not loaded yet. Skipping conversion...");
             return;
         }
 
         const inputContent = this.editors?.input.getValue() || "";
         const configContent = this.editors?.config.getValue() || "";
-        const inputMode = (document.getElementById("fileFormat") as HTMLSelectElement)?.value || "yaml";
+        const inputMode = "yaml";
 
         try {
-            const result = Convert(inputContent, inputMode, configContent);
-            this.editors?.output.setValue(result);
+            // Destructure the two-return-values from Convert
+            const [output, error] = Convert(inputContent, inputMode, configContent);
+
+            // If there's an error, display it and log it
+            if (error) {
+                console.error("Error calling WASM Convert:", error);
+                this.editors?.output.setValue("// Error: " + error);
+            } else {
+                // Otherwise set the output editor’s content
+                this.editors?.output.setValue(output);
+            }
         } catch (err: any) {
-            console.error("Error calling WASM Convert:", err);
+            // Catch any unexpected runtime exceptions
+            console.error("Unexpected error calling WASM Convert:", err);
             this.editors?.output.setValue("// Error: " + err.toString());
         }
     }
