@@ -68,5 +68,9 @@ rules:
   # "**.endpoints.[value]": { declare: Endpoint }
   # "<Endpoint>.path": { declare: Path }
   # "<Endpoint>.method": { replace: "http.Method module/http" }
+
+  # "**.objectives.endpoints": { declare: ObjectivesEndpoints }
+  # "<ObjectivesEndpoints>": { iterator: true }
+  # "<ObjectivesEndpoints>.*": { declare: Endpoints }
 `,
 };
