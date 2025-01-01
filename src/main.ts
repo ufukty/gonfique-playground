@@ -65,18 +65,15 @@ gateways:
 
 ### Use links to provide feedback on each project and ask 
 ### questions:
-### https://github.com/ufukty/gonfique
+### https://github.com/ufukty/gonfique (switch dev for docs)
 ### https://github.com/ufukty/gonfique-live
 
 ### Toggle each comment block under rules section at once
 ### to switch between demos
 
-meta:
-  type: Config
-
 rules:
 
-  "**": { export: true }
+  # "**": { export: true }
 
   # "**.endpoints": { export: true }
   # "**.endpoints.*": { declare: Endpoint }
