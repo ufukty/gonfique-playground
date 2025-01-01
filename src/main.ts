@@ -121,12 +121,20 @@ class EditorManager {
             inherit: true,
             rules: [
                 { token: "", foreground: "c9d1d9", background: "0d1117" },
-                { token: "comment", foreground: "6a737d" },
-                { token: "keyword", foreground: "7ee787" },
-                { token: "number", foreground: "79c0ff" },
-                { token: "string", foreground: "a5d6ff" },
+                { token: "bool", foreground: "79c0ff" },
+                { token: "builtin", foreground: "ffa657" },
+                { token: "comment", foreground: "6a737d", fontStyle: "italic" },
+                { token: "delimiter", foreground: "c9d1d9" },
+                { token: "function.declaration", foreground: "d2a8ff" },
+                { token: "function", foreground: "d2a8ff" },
                 { token: "identifier", foreground: "c9d1d9" },
                 { token: "key", foreground: "7ee787" },
+                { token: "keyword", foreground: "ff7b72" },
+                { token: "number", foreground: "79c0ff" },
+                { token: "operator", foreground: "c9d1d9" },
+                { token: "string", foreground: "a5d6ff" },
+                { token: "type.identifier", foreground: "ffa657" },
+                { token: "type", foreground: "ffa657" },
             ],
             colors: {
                 "editor.background": "#0d1117",
@@ -134,8 +142,11 @@ class EditorManager {
                 "editor.lineHighlightBackground": "#161b2233",
                 "editor.selectionBackground": "#24416b77",
                 "editorCursor.foreground": "#c9d1d9",
-                "editorIndentGuide.background": "#21262d",
                 "editorIndentGuide.activeBackground": "#30363d",
+                "editorIndentGuide.background": "#21262d",
+                "scrollbarSlider.activeBackground": "#484f58",
+                "scrollbarSlider.background": "#484f58",
+                "scrollbarSlider.hoverBackground": "#484f58cc",
             },
         });
 
@@ -146,7 +157,6 @@ class EditorManager {
                 language: "yaml",
                 automaticLayout: true,
                 minimap: { enabled: false },
-                theme: "github-dark",
             }),
 
             // Initialize middle editor
@@ -155,7 +165,6 @@ class EditorManager {
                 language: "yaml",
                 automaticLayout: true,
                 minimap: { enabled: false },
-                theme: "github-dark",
             }),
 
             // Initialize right editor (read-only)
@@ -167,6 +176,8 @@ class EditorManager {
                 minimap: { enabled: false },
             }),
         };
+
+        monaco.editor.setTheme("github-dark");
     }
 
     /**
