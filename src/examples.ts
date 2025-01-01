@@ -53,6 +53,8 @@ rules:
 
   # "**": { export: true }
 
+  # "**.endpoints.*": { declare: Endpoint }
+
   # "**.endpoints": { export: true }
   # "**.endpoints.*": { declare: Endpoint }
 
