@@ -107,9 +107,11 @@ class EditorManager {
     private debouncedAutoConvert = debounce(() => this.doConversion(), 500);
 
     constructor() {
-        this.initWasm();
-        this.createEditors();
-        this.wireActions();
+        this.initWasm().then(() => {
+            this.createEditors();
+            this.wireActions();
+            this.doConversion(); // initial generation
+        });
     }
 
     /**
