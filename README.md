@@ -1,4 +1,4 @@
-# Gonfique Live
+# Gonfique Playground
 
 This repository contains the web project which lets users to try Gonfique in their browsers before installing the tool to their system.
 

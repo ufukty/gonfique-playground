@@ -30,10 +30,10 @@ gateways:
 ### version and it is still under development. 
 ### Its design and implementation will change before release.
 
-### Gonfique Live (where you are now) is a separate project 
-### that puts Gonfique into your browser to let you try it 
-### before installing to system, and it is under development 
-### too.
+### Gonfique Playground (where you are now) is a separate  
+### projectthat puts Gonfique into your browser to let you 
+### try it before installing to system, and it is under  
+### development too.
 
 ### Use links to provide feedback on each project and ask 
 ### questions:
