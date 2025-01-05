@@ -6,6 +6,12 @@ export default {
         port: 3000,
     },
     build: {
-        outDir: "../build", // Build output goes outside "src"
+        outDir: "../build",
+        rollupOptions: {
+            input: {
+                main: "./src/index.html",
+                privacyPolicy: "./src/privacy-policy.html",
+            },
+        },
     },
 };
