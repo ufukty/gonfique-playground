@@ -74,12 +74,47 @@ export class EditorManager {
             },
         });
 
+        monaco.editor.defineTheme("github-light", {
+            base: "vs",
+            inherit: true,
+            rules: [
+                { token: "", foreground: "24292f", background: "ffffff" },
+                { token: "bool", foreground: "0550ae" },
+                { token: "builtin", foreground: "953800" },
+                { token: "comment", foreground: "6e7781", fontStyle: "italic" },
+                { token: "delimiter", foreground: "24292f" },
+                { token: "function.declaration", foreground: "8250df" },
+                { token: "function", foreground: "8250df" },
+                { token: "identifier", foreground: "24292f" },
+                { token: "key", foreground: "116329" },
+                { token: "keyword", foreground: "cf222e" },
+                { token: "number", foreground: "0550ae" },
+                { token: "operator", foreground: "24292f" },
+                { token: "string", foreground: "0a3069" },
+                { token: "type.identifier", foreground: "953800" },
+                { token: "type", foreground: "953800" },
+            ],
+            colors: {
+                "editor.background": "#ffffff",
+                "editor.foreground": "#24292f",
+                "editor.lineHighlightBackground": "#eaeef280",
+                "editor.selectionBackground": "#9cd1ff66",
+                "editorCursor.foreground": "#24292f",
+                "editorIndentGuide.activeBackground": "#d0d7de",
+                "editorIndentGuide.background": "#eaeef2",
+                "scrollbarSlider.activeBackground": "#8c959f",
+                "scrollbarSlider.background": "#8c959f",
+                "scrollbarSlider.hoverBackground": "#8c959fcc",
+            },
+        });
+
         this.editors = {
             input: monaco.editor.create(document.querySelector("#input-editor .editor-pane")!, {
                 value: examples.input,
                 language: "yaml",
                 automaticLayout: true,
                 minimap: { enabled: false },
+                tabSize: 2,
             }),
 
             config: monaco.editor.create(document.querySelector("#config-editor .editor-pane")!, {
@@ -87,6 +122,7 @@ export class EditorManager {
                 language: "yaml",
                 automaticLayout: true,
                 minimap: { enabled: false },
+                tabSize: 2,
             }),
 
             output: monaco.editor.create(document.querySelector("#output-editor .editor-pane")!, {
@@ -94,10 +130,37 @@ export class EditorManager {
                 readOnly: true,
                 automaticLayout: true,
                 minimap: { enabled: false },
+                tabSize: 2,
             }),
         };
 
-        monaco.editor.setTheme("github-dark");
+        this.applyTheme(this.getPreferredTheme());
+        this.watchSystemThemeChanges();
+    }
+
+    private applyTheme(name: "github-dark" | "github-light") {
+        monaco.editor.setTheme(name);
+    }
+
+    private getPreferredTheme(): "github-dark" | "github-light" {
+        // If you also support a manual toggle, check localStorage first.
+        const stored = localStorage.getItem("theme"); // "dark" | "light" | null
+        if (stored === "dark") return "github-dark";
+        if (stored === "light") return "github-light";
+
+        // Fallback to OS preference
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        return prefersDark ? "github-dark" : "github-light";
+    }
+
+    private watchSystemThemeChanges() {
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        // modern browsers
+        media.addEventListener("change", (e) => {
+            const stored = localStorage.getItem("theme");
+            // Only react to system changes if user hasn’t explicitly chosen a theme
+            if (!stored) this.applyTheme(e.matches ? "github-dark" : "github-light");
+        });
     }
 
     private addListeners(): void {

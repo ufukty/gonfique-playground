@@ -1,3 +1,7 @@
+:root {
+    color-scheme: light dark;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,30 +10,29 @@
     font-family: inherit;
     color: inherit;
     font-weight: inherit;
+    line-height: 1.6em;
 }
 
 html {
     font-size: 12px;
-    height: 100%;
     font-weight: 400;
     font-family: monospace;
     scroll-behavior: smooth;
-    background-color: #222d3a;
-    color: #bcc9da;
+    background-color: light-dark(#c5ccd5, #3a3e44);
+    color: light-dark(#222d3a, #a4a8ac);
 }
 
+html,
 body {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 60px auto min-content;
-    grid-template-areas:
-        "header header header"
-        "input config output"
-        "footer footer footer";
-    gap: 1px;
-    overflow: hidden;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+html,
+body,
+.editor,
+.editor-pane {
+    overflow-x: hidden;
 }
 
 a {
@@ -38,121 +41,136 @@ a {
     transition: color 0.2s ease-in-out;
 }
 
-header {
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #0d1116;
-    border-bottom: 1px solid #222d3a;
+body {
+    --whitespace: 20px;
+    --total-whitespace: ((var(--no-columns) + 1) * var(--whitespace));
 
-    #home {
-        cursor: default;
+    padding: var(--whitespace);
 
-        font-family: monospace;
-        font-size: 1.5rem;
-        padding-top: 2px;
-    }
+    display: grid;
+    grid-template-columns: repeat(calc((100vw - var(--total-whitespace)) / var(--no-columns)), var(--no-columns));
+    justify-content: stretch;
+    align-items: stretch;
+    gap: var(--whitespace);
 
-    #motto {
-        color: #3b5370;
-        font-family: cursive;
-        font-style: italic;
+    background-color: light-dark(#dcdee0, #0c0e11);
 
-        code {
-            padding: 0 10px;
-            font-family: monospace;
-        }
-    }
-
-    #doc-ref {
-        border: 1px solid #262f39;
-        padding: 5px 15px;
-        border-radius: 4px;
-
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        .cta {
-            padding-top: 2px;
-        }
-
-        transition: 200ms ease-out;
-
-        &>svg {
-            width: 24px;
-            aspect-ratio: 1;
-
-            &>path {
-                transition: 200ms ease-out;
-                fill: #bcc9da;
-            }
-        }
-
-        &:hover {
-            background-color: #262f39;
-        }
-    }
-}
-
-#input-editor {
-    grid-area: input;
-}
-
-#config-editor {
-    grid-area: config;
-}
-
-#output-editor {
-    grid-area: output;
-}
-
-.editor {
-    display: flex;
-    flex-direction: column;
-
-    height: 100%;
-
-    .header {
-        width: 100%;
-        padding: 10px 20px;
-        text-align: center;
-        background-color: #0d111689;
-        font-size: 1rem;
-        border-bottom: 1px solid #222d3a;
-    }
-
-    .editor-pane {
-        flex-grow: 1;
-        background-color: #0d1116;
-    }
-}
-
-footer {
-    grid-area: footer;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #0d1116;
-    border-top: 1px solid #222d3a;
-
-    a:hover {
-        color: #81d4fa;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        grid-template-columns: 1fr;
-        grid-template-rows: 60px 1fr 1fr 1fr min-content;
+    @media screen and (width<1000px) {
+        --no-columns: 1;
+        /* leaves empty space around for user to use to scroll the page */
+        gap: calc(var(--whitespace) * 4) var(--whitespace);
+        padding-bottom: calc(var(--whitespace) * 4);
+        grid-template-rows: min-content repeat(3, minmax(300px, 60svh)) min-content;
         grid-template-areas:
             "header"
             "input"
             "config"
             "output"
             "footer";
+    }
+
+    @media screen and (1000px<=width) and (width<1500px) {
+        --no-columns: 2;
+        grid-template-rows: repeat(2, 1fr) min-content;
+        grid-template-areas:
+            "input header"
+            "config output"
+            "footer footer";
+    }
+
+    @media screen and (1500px<=width) {
+        --no-columns: 3;
+        grid-template-areas:
+            "header config output"
+            "input config output"
+            "footer footer footer";
+    }
+
+    #input-editor {
+        grid-area: input;
+    }
+
+    #config-editor {
+        grid-area: config;
+    }
+
+    #output-editor {
+        grid-area: output;
+    }
+
+    .editor {
+        width: calc((100vw - var(--total-whitespace)) / var(--no-columns));
+
+        display: flex;
+        flex-direction: column;
+
+        border-radius: 8px;
+        box-shadow: 0 10px 20px -10px light-dark(#9ca5af7e, #000000);
+        border: 2px solid light-dark(#b2b7bd, #262a2f);
+
+        & > .header {
+            width: 100%;
+            padding: 10px 20px;
+            line-height: normal;
+
+            background-color: light-dark(#ffffff, #0d1116);
+            border-bottom: 2px solid light-dark(#c5ccd5, #262a2f);
+
+            font-weight: bold;
+            font-size: 1rem;
+
+            .hint {
+                padding: 3px 5px;
+                border-radius: 4px;
+                color: light-dark(#ff7e15, #ffb47e);
+                background-color: light-dark(#fff3e9, #502b0c);
+                transform: skew(20deg);
+            }
+        }
+
+        & > .editor-pane {
+            flex-grow: 1;
+            background-color: light-dark(#ffffff, #0d1116);
+        }
+    }
+
+    header {
+        grid-area: header;
+
+        a {
+            text-decoration: underline;
+        }
+
+        & > *:not(:is(:first-child, :last-child)) {
+            margin: 10px 0;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        p {
+            opacity: 0.8;
+            max-width: 500px;
+        }
+    }
+
+    footer {
+        grid-area: footer;
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            padding-inline: 7px;
+            text-decoration: underline;
+
+            &:hover {
+                color: light-dark(#000000, #dbebff);
+            }
+        }
     }
 }
