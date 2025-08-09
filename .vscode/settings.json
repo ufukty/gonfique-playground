@@ -1,5 +1,9 @@
 {
-  "[css]": {
-    "prettier.tabWidth": 4,
-  }
+    "[css]": {
+        "prettier.tabWidth": 4,
+    },
+    "[typescript]": {
+        "prettier.tabWidth": 4
+    },
+    "editor.tabSize": 4
 }
