@@ -1,5 +1,5 @@
 export const examples = {
-    input: `domain: localhost
+  input: `domain: localhost
 gateways:
   public:
     path: /api/v1.0.0
@@ -26,7 +26,7 @@ gateways:
           create: { method: "POST", path: "/" }
           delete: { method: "DELETE", path: "/" }
 `,
-    config: `rules:
+  config: `rules:
 
   # below 4 lines create a common type "Endpoints"
   # for multiple type-matching values then

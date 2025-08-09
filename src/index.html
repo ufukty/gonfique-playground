@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gonfique Playground - YAML and JSON to Go</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonfique Playground - YAML and JSON to Go</title>
 
 
-        <link rel="icon" type="image/png" sizes="16x16" href="/.assets/favicon@1x.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/.assets/favicon@2x.png">
-        <link rel="icon" type="image/png" sizes="48x48" href="/.assets/favicon@3x.png">
-        <link rel="icon" type="image/png" sizes="64x64" href="/.assets/favicon@4x.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/.assets/favicon@180w.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/.assets/favicon@1x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/.assets/favicon@2x.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/.assets/favicon@3x.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/.assets/favicon@4x.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/.assets/favicon@180w.png">
 
-        <meta name="title" content="Gohandlers — Gohandlers Docs">
-        <meta name="description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
+    <meta name="title" content="Gohandlers — Gohandlers Docs">
+    <meta name="description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
 
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://gohandlers.pages.dev">
-        <meta property="og:title" content="Gohandlers — Gohandlers Docs">
-        <meta property="og:description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
-        <meta property="og:image" content="https://gohandlers.pages.dev/.assets/card-og.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gohandlers.pages.dev">
+    <meta property="og:title" content="Gohandlers — Gohandlers Docs">
+    <meta property="og:description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
+    <meta property="og:image" content="https://gohandlers.pages.dev/.assets/card-og.png">
 
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="https://gohandlers.pages.dev">
-        <meta name="twitter:title" content="Gohandlers — Gohandlers Docs">
-        <meta name="twitter:description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
-        <meta name="twitter:image" content="https://gohandlers.pages.dev/.assets/card-twitter.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://gohandlers.pages.dev">
+    <meta name="twitter:title" content="Gohandlers — Gohandlers Docs">
+    <meta name="twitter:description" content="Discover the Gohandlers documentation, a comprehensive guide to building web applications with Go.">
+    <meta name="twitter:image" content="https://gohandlers.pages.dev/.assets/card-twitter.png">
 
 
-        <link rel="stylesheet" href="/styles.css">
-    </head>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
 
-    <body>
-        <header>
-            <h1 id="project-name">Gonfique Playground</h1>
-            <p>Enter the sample config file of yours and an optional Gonfique configuration to produce the mapping type. Later copy and paste the output into your project and call the <strong>ReadConfig</strong> function with the actula path during runtime provided via CLI arg.</p>
-            <p>This alpha version of Gonfique can make mistakes, check the results for correctness.</p>
-            <p>Playground loads with a Gonfique config for the sample config. Delete the provided Gonfique config following pasting your config sample in. The documentation is on <a target="_blank" href="https://github.com/ufukty/gonfique">the repository</a>. It also houses the CLI version, which is better to integrate into your build pipeline.</p>
-            <p>Layout gives you one column per each 500 pixels of window width. So, it looks better on desktop.</p>
-            <p>Your inputs stays offline as Playground works inside the browser.</p>
-        </header>
+  <body>
+    <header>
+      <h1 id="project-name">Gonfique Playground</h1>
+      <p>Enter the sample config file of yours and an optional Gonfique configuration to produce the mapping type. Later copy and paste the output into your project and call the <strong>ReadConfig</strong> function with the actula path during runtime provided via CLI arg.</p>
+      <p>This alpha version of Gonfique can make mistakes, check the results for correctness.</p>
+      <p>Playground loads with a Gonfique config for the sample config. Delete the provided Gonfique config following pasting your config sample in. The documentation is on <a target="_blank" href="https://github.com/ufukty/gonfique">the repository</a>. It also houses the CLI version, which is better to integrate into your build pipeline.</p>
+      <p>Layout gives you one column per each 500 pixels of window width. So, it looks better on desktop.</p>
+      <p>Your inputs stays offline as Playground works inside the browser.</p>
+    </header>
 
-        <div id="input-editor" class="editor">
-            <h2 class="header">Sample config <span class="hint">Copy yours in</span></h2>
-            <div class="editor-pane"></div>
-        </div>
-        <div id="config-editor" class="editor">
-            <h2 class="header">Gonfique config <span class="hint">Experiment on this</span></h2>
-            <div class="editor-pane"></div>
-        </div>
-        <div id="output-editor" class="editor">
-            <h2 class="header">Output <span class="hint">Copy this out</span></h2>
-            <div class="editor-pane"></div>
-        </div>
+    <div id="input-editor" class="editor">
+      <h2 class="header">Sample config <span class="hint">Copy yours in</span></h2>
+      <div class="editor-pane"></div>
+    </div>
+    <div id="config-editor" class="editor">
+      <h2 class="header">Gonfique config <span class="hint">Experiment on this</span></h2>
+      <div class="editor-pane"></div>
+    </div>
+    <div id="output-editor" class="editor">
+      <h2 class="header">Output <span class="hint">Copy this out</span></h2>
+      <div class="editor-pane"></div>
+    </div>
 
-        <footer>
-            <a target="_blank" href="https://github.com/ufukty/gonfique">Gonfique CLI</a>
-            and
-            <a target="_blank" href="https://github.com/ufukty/gonfique-playground">Gonfique Playground</a>
-            is created by
-            <a target="_blank" href="https://ufukty.com">ufukty</a>
-            for improving the coverage of type-safety on Go backends. Check out
-            <a href="./privacy-policy.html">Privacy Policy</a>
-            for the analytics usage.
-        </footer>
+    <footer>
+      <a target="_blank" href="https://github.com/ufukty/gonfique">Gonfique CLI</a>
+      and
+      <a target="_blank" href="https://github.com/ufukty/gonfique-playground">Gonfique Playground</a>
+      is created by
+      <a target="_blank" href="https://ufukty.com">ufukty</a>
+      for improving the coverage of type-safety on Go backends. Check out
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      for the analytics usage.
+    </footer>
 
-        <script type="module" src="/wasm_exec.js"></script>
-        <script type="module" src="./main.ts"></script>
-    </body>
+    <script type="module" src="/wasm_exec.js"></script>
+    <script type="module" src="./main.ts"></script>
+  </body>
 
 </html>

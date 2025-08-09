@@ -1,38 +1,38 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: inherit;
-    font-family: inherit;
-    color: inherit;
-    font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  font-weight: inherit;
 }
 
 html {
-    font-size: 16px;
-    font-weight: 400;
-    scroll-behavior: smooth;
-    font-family: 'Fira Code', monospace;
-    background-color: #222d3a;
-    color: #dbe8fb;
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  font-family: "Fira Code", monospace;
+  background-color: #222d3a;
+  color: #dbe8fb;
 }
 
 body {
-    margin: 0;
-    padding: 200px 0;
-    min-height: 100%;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  margin: 0;
+  padding: 200px 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-    background-color: #222d3a;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #222d3a;
 }
 
 h1,
@@ -41,60 +41,60 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Fira Code', monospace;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-family: "Fira Code", monospace;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 ul,
 ol {
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 a {
-    text-decoration: none;
-    color: #4fc3f7;
-    transition: color 0.2s ease;
+  text-decoration: none;
+  color: #4fc3f7;
+  transition: color 0.2s ease;
 }
 
 a:hover,
 a:focus {
-    color: #81d4fa;
+  color: #81d4fa;
 }
 
 :focus {
-    outline: 2px dashed #4fc3f7;
-    outline-offset: 2px;
+  outline: 2px dashed #4fc3f7;
+  outline-offset: 2px;
 }
 
 code {
-    font-family: 'Fira Code', monospace;
-    background-color: #2a3b4c;
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    color: #e0f7fa;
+  font-family: "Fira Code", monospace;
+  background-color: #2a3b4c;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #e0f7fa;
 }
 
 pre {
-    background-color: #2a3b4c;
-    padding: 1rem;
-    border-radius: 4px;
-    overflow-x: auto;
+  background-color: #2a3b4c;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
