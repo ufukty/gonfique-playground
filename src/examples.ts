@@ -37,11 +37,11 @@ gateways:
   "<Endpoint>.path": { declare: Path }
 
   # exporting create types with automatically
-  # choosen shortest non-colliding type names.
+  # choosen shortest and non-colliding type names.
   "domain": { export: true }
   "**.services.*": { export: true }
-  
-  # you can still customize values whose 
+
+  # you can still use path matching for values whose
   # parents are previously exported.
   "**.services.*.path": { declare: Path }`,
 };
