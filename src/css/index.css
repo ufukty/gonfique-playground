@@ -29,8 +29,6 @@ body {
   align-items: stretch;
   gap: var(--whitespace);
 
-  background-color: light-dark(#dcdee0, #0c0e11);
-
   @media screen and (width<1000px) {
     --no-columns: 1;
     /* leaves empty space around for user to use to scroll the page */

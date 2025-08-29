@@ -18,6 +18,6 @@ html {
   font-weight: 400;
   font-family: monospace;
   scroll-behavior: smooth;
-  background-color: light-dark(#c5ccd5, #3a3e44);
+  background-color: light-dark(#dcdee0, #0c0e11);
   color: light-dark(#222d3a, #a4a8ac);
 }
