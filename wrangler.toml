@@ -1,0 +1,12 @@
+name = "gonfique-playground"
+main = "worker/index.ts"
+compatibility_date = "2024-12-31"
+
+[build]
+command = "npm run build"
+
+[assets]
+binding = "ASSETS"
+directory = "./build"
+html_handling = "auto"
+not_found_handling = "none"
