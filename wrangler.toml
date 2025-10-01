@@ -1,6 +1,7 @@
 name = "gonfique-playground"
 main = "worker/index.ts"
 compatibility_date = "2024-12-31"
+preview_urls = true
 
 [build]
 command = "npm run build"
