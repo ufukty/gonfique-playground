@@ -27,6 +27,16 @@ npm run dev
 npm run build
 ```
 
+## Deploy
+
+Gonfique Playground is deployed on a Cloudflare Worker that serves the static assets built by Vite. To publish a new version run
+
+```sh
+npm run deploy
+```
+
+This command builds the site and pushes the Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/). The Worker handles the canonical domain redirect that previously lived in the Cloudflare Pages middleware.
+
 ## License
 
 Shared under Apache2 license terms except for dependencies listed below. See LICENSE file for details of Apache2.

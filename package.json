@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npx wrangler deploy"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +16,10 @@
     "monaco-editor": "^0.52.2"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251001.0",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2",
-    "vite": "^6.0.6"
+    "vite": "^6.0.6",
+    "wrangler": "^4.40.3"
   }
 }
