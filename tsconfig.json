@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
-    "strict": true,
     "esModuleInterop": true,
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "sourceMap": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES6",
     "types": [
       "@cloudflare/workers-types",
       "node"
     ]
   },
-  "include": [
-    "src/**/*",
-    "worker/**/*"
-  ],
   "exclude": [
     "node_modules",
     "dist"
+  ],
+  "include": [
+    "src/**/*",
+    "worker/**/*"
   ]
 }
