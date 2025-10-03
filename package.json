@@ -1,25 +1,25 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "npx wrangler deploy"
-  },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "monaco-editor": "^0.52.2"
   },
+  "description": "",
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251001.0",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2",
     "vite": "^6.0.6",
     "wrangler": "^4.40.3"
-  }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "server",
+  "scripts": {
+    "build": "vite build",
+    "deploy": "npx wrangler deploy",
+    "dev": "vite --host",
+    "preview": "vite preview"
+  },
+  "version": "1.0.0"
 }
