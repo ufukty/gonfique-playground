@@ -10,7 +10,7 @@
     "wrangler": "^4.80.0"
   },
   "main": "index.js",
-  "name": "server",
+  "name": "gonfique.com",
   "private": true,
   "scripts": {
     "build": "vite build",
