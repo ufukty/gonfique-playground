@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES6",
+    "target": "esnext",
     "types": [
       "@cloudflare/workers-types",
       "node"
