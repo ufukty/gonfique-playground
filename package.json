@@ -1,15 +1,15 @@
 {
   "author": "",
   "dependencies": {
-    "monaco-editor": "^0.52.2"
+    "monaco-editor": "^0.55.1"
   },
   "description": "",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251001.0",
-    "@types/node": "^22.10.2",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.6",
-    "wrangler": "^4.40.3"
+    "@cloudflare/workers-types": "^4.20260405.1",
+    "@types/node": "^25.5.2",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.5",
+    "wrangler": "^4.80.0"
   },
   "keywords": [],
   "license": "ISC",
