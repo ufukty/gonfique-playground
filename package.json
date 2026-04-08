@@ -18,10 +18,8 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "deploy": "npx wrangler deploy",
-    "dev": "vite --host",
+    "dev": "wrangler dev",
     "lint": "eslint src --ext ts",
-    "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   }
 }
