@@ -19,6 +19,7 @@
     "deploy": "npx wrangler deploy",
     "dev": "vite --host",
     "lint": "eslint src --ext ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   }
 }
