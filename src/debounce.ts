@@ -5,7 +5,7 @@
  * @param wait The number of milliseconds to wait before calling `func`.
  * @returns A debounced version of `func`.
  */
-export function debounce<T extends (...args: any[]) => void>(func: T, wait = 300) {
+export function debounce<T extends (...args: unknown[]) => void>(func: T, wait = 300) {
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
   return function debouncedFunction(...args: Parameters<T>) {

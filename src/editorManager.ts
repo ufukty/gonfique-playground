@@ -3,11 +3,12 @@ import { examples } from "./examples";
 import { debounce } from "./debounce";
 import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
-declare const Go: any;
+const buildURL = "gonfique/v2.0.0.1.wasm";
 
-declare function Convert(input: string, inputMode: string, config: string): [string, string];
-
-const buildURL = "gonfique-wasm/v2.0.0-pre-alpha-11-g5e534d7.wasm";
+function errstr(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  return String(err);
+}
 
 export class EditorManager {
   private editors: {
@@ -28,16 +29,17 @@ export class EditorManager {
   }
 
   private async initWasm(): Promise<void> {
+    if (typeof Go === "undefined") {
+      throw new Error("Support file (wasm_exec.js) is not loaded.");
+    }
     const go = new Go();
     try {
-      const response = await fetch(buildURL);
-      const bytes = await response.arrayBuffer();
-      const result = await WebAssembly.instantiate(bytes, go.importObject);
-      go.run(result.instance);
+      const source = await WebAssembly.instantiateStreaming(fetch(buildURL), go.importObject);
+      go.run(source.instance);
       this.wasmInitialized = true;
-      console.log("WASM loaded and running.");
+      console.log("Go WASM is loaded and running.");
     } catch (err) {
-      console.error("Error loading WASM:", err);
+      console.error("loading and instantiating Go WASM:", err);
     }
   }
 
@@ -104,9 +106,9 @@ export class EditorManager {
       } else {
         this.editors?.output.setValue(output);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Unexpected error calling WASM Convert:", err);
-      this.editors?.output.setValue("// Error: " + err.toString());
+      this.editors?.output.setValue("// Error: " + errstr(err));
     }
   }
 }
