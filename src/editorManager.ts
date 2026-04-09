@@ -30,14 +30,12 @@ export class EditorManager {
   private async initWasm(): Promise<void> {
     const go = new Go();
     try {
-      const response = await fetch(buildURL);
-      const bytes = await response.arrayBuffer();
-      const result = await WebAssembly.instantiate(bytes, go.importObject);
-      go.run(result.instance);
+      const source = await WebAssembly.instantiateStreaming(fetch(buildURL), go.importObject);
+      go.run(source.instance);
       this.wasmInitialized = true;
-      console.log("WASM loaded and running.");
+      console.log("Go WASM is loaded and running.");
     } catch (err) {
-      console.error("Error loading WASM:", err);
+      console.error("loading and instantiating Go WASM:", err);
     }
   }
 
