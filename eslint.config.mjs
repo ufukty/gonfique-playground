@@ -19,6 +19,6 @@ export default defineConfig([
     },
   },
   {
-    ignores: ["out/**", "dist/**", "**/*.d.ts"],
+    ignores: ["out/**", "dist/**", "**/*.d.ts", "src/public/wasm_exec.js"],
   },
 ]);
