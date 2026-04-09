@@ -3,7 +3,7 @@ import { examples } from "./examples";
 import { debounce } from "./debounce";
 import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
-const buildURL = "gonfique-wasm/v2.0.0-pre-alpha-11-g5e534d7.wasm";
+const buildURL = "gonfique-wasm/v2.0.0.1.wasm";
 
 export class EditorManager {
   private editors: {
