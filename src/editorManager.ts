@@ -24,6 +24,9 @@ export class EditorManager {
   }
 
   private async initWasm(): Promise<void> {
+    if (typeof Go === "undefined") {
+      throw new Error("Support file (wasm_exec.js) is not loaded.");
+    }
     const go = new Go();
     try {
       const source = await WebAssembly.instantiateStreaming(fetch(buildURL), go.importObject);
