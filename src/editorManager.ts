@@ -3,10 +3,6 @@ import { examples } from "./examples";
 import { debounce } from "./debounce";
 import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
-declare const Go: any;
-
-declare function Convert(input: string, inputMode: string, config: string): [string, string];
-
 const buildURL = "gonfique-wasm/v2.0.0-pre-alpha-11-g5e534d7.wasm";
 
 export class EditorManager {
