@@ -5,6 +5,11 @@ import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
 const buildURL = "gonfique/v2.0.0.1.wasm";
 
+function errstr(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  return String(err);
+}
+
 export class EditorManager {
   private editors: {
     input: monaco.editor.IStandaloneCodeEditor;
@@ -101,9 +106,9 @@ export class EditorManager {
       } else {
         this.editors?.output.setValue(output);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Unexpected error calling WASM Convert:", err);
-      this.editors?.output.setValue("// Error: " + err.toString());
+      this.editors?.output.setValue("// Error: " + errstr(err));
     }
   }
 }
