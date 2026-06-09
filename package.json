@@ -14,7 +14,7 @@
     "wrangler": "^4.99.0"
   },
   "main": "index.js",
-  "name": "gonfique.com",
+  "name": "gonfique.ufukty.com",
   "private": true,
   "scripts": {
     "build": "vite build",

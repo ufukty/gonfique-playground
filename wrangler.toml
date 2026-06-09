@@ -13,6 +13,6 @@ html_handling = "drop-trailing-slash"
 not_found_handling = "none"
 
 [[routes]]
-pattern = "gonfique.com"
-zone_name = "gonfique.com"
+pattern = "gonfique.ufukty.com"
+zone_name = "gonfique.ufukty.com"
 custom_domain = true
