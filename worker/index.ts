@@ -2,14 +2,13 @@ export interface Env {
   ASSETS: Fetcher;
 }
 
-const PAGES_HOSTNAME = "gonfique.pages.dev";
-const CANONICAL_HOSTNAME = "gonfique.com";
+const CANONICAL_HOSTNAME = "gonfique.ufukty.com";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.hostname === PAGES_HOSTNAME) {
+    if (url.hostname !== CANONICAL_HOSTNAME) {
       url.hostname = CANONICAL_HOSTNAME;
       url.protocol = "https:";
       return Response.redirect(url.toString(), 308);
