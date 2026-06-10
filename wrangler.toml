@@ -14,5 +14,5 @@ not_found_handling = "none"
 
 [[routes]]
 pattern = "gonfique.ufukty.com"
-zone_name = "gonfique.ufukty.com"
+zone_name = "ufukty.com"
 custom_domain = true
