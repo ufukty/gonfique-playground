@@ -26,7 +26,11 @@ gateways:
           create: { method: "POST", path: "/" }
           delete: { method: "DELETE", path: "/" }
 `,
-  config: `rules:
+  config: `meta:
+  package: kubernetes
+  type: Config
+
+rules:
 
   # below 4 lines create a common type "Endpoints"
   # for multiple type-matching values then
