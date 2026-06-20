@@ -3,7 +3,7 @@ import { examples } from "./examples";
 import { debounce } from "./debounce";
 import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
-const buildURL = "gonfique/v2.0.0.1.wasm";
+const buildURL = "gonfique/v2.0.0-alpha.9.wasm";
 
 function errstr(err: unknown): string {
   if (err instanceof Error) return err.message;
