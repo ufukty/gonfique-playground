@@ -1,6 +1,6 @@
 import * as monaco from "monaco-editor";
 import { examples } from "./examples";
-import { debounce } from "./debounce";
+import * as once from "./once";
 import { githubDarkTheme, githubLightTheme } from "./monacoThemes";
 
 const buildURL = "gonfique/v2.0.0-alpha.9.wasm";
@@ -81,9 +81,8 @@ export class EditorManager {
   }
 
   private addListeners(): void {
-    const debouncedAutoConvert = debounce(() => this.update(), 500);
-    this.editors?.input.onDidChangeModelContent(() => debouncedAutoConvert());
-    this.editors?.config.onDidChangeModelContent(() => debouncedAutoConvert());
+    this.editors?.input.onDidChangeModelContent(once.aFrame(this.update.bind(this)));
+    this.editors?.config.onDidChangeModelContent(once.aFrame(this.update.bind(this)));
     this.colorSchemeWatcher.addEventListener("change", this.applyTheme.bind(this));
   }
 
