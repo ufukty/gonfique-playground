@@ -27,25 +27,14 @@ gateways:
           delete: { method: "DELETE", path: "/" }
 `,
   config: `meta:
-  package: kubernetes
+  package: endpoints
   type: Config
 
 rules:
-
-  # below 4 lines create a common type "Endpoints"
-  # for multiple type-matching values then
-  # further customizes it's belongings.
-  "**.endpoints": { dict: map, declare: Endpoints }
-  "<Endpoints>.[value]": {declare: Endpoint}
-  "<Endpoint>.method": { replace: http.Method net/http }
+  "**.endpoints.*": {declare: Endpoint}
+  
+  "**.services.*.path": { declare: Path }
   "<Endpoint>.path": { declare: Path }
-
-  # exporting create types with automatically
-  # choosen shortest and non-colliding type names.
-  "domain": { export: true }
-  "**.services.*": { export: true }
-
-  # you can still use path matching for values whose
-  # parents are previously exported.
-  "**.services.*.path": { declare: Path }`,
+  
+  "<Endpoint>.method": { replace: http.Method net/http }`,
 };
