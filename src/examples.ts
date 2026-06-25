@@ -31,7 +31,7 @@ gateways:
   type: Config
 
 rules:
-  "**.endpoints.*": {declare: Endpoint}
+  "**.endpoints.*": { declare: Endpoint }
   
   "**.services.*.path": { declare: Path }
   "<Endpoint>.path": { declare: Path }
