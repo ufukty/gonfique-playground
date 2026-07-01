@@ -16,8 +16,4 @@ Gonfique Playground brings [Gonfique](https://go.ufukty.com/gonfique) to browser
 
 Shared under Apache2 license terms except for dependencies listed below. See LICENSE file for details of Apache2.
 
-**src/public/wasm_exec.js**
-
-Copyright 2018 The Go Authors. All rights reserved.
-Use of this source code is governed by a BSD-style
-license that can be found in the LICENSE file.
+src/public/wasm_exec.js: Copyright 2018 The Go Authors. All rights reserved. Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
