@@ -3,8 +3,6 @@
 
 # Gonfique Playground
 
-![Screenshot of the website](assets/screenshot.png)
-
 Gonfique Playground brings Gonfique to your browser. 3-pane editor layout of GP offers instant response to change in input and Gonfique config.
 
 Playground is a mainly a Node project that levarages Microsoft Monaco, TypeScript, and Golang WASM to present great user experience at maintainable development workflow.
