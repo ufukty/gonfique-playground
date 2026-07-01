@@ -18,8 +18,10 @@
   "private": true,
   "scripts": {
     "build": "vite build",
+    "deploy": "bash scripts/deploy.sh",
     "dev": "wrangler dev",
     "lint": "eslint src --ext ts",
+    "preview": "bash scripts/preview.sh",
     "typecheck": "tsc --noEmit"
   }
 }
